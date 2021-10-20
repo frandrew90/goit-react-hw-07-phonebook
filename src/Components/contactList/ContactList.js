@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import { removeContact } from '../../Redux/phonebook/phonebook-operations';
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
+import {
+  getContacts,
+  getFilter,
+} from '../../Redux/phonebook/phonebook-selectors';
 
 const ContactList = ({ filtered, removeContact, contactsList }) => {
   const onFindContact = (filtered, contactsList) => {
@@ -38,8 +42,8 @@ const ContactList = ({ filtered, removeContact, contactsList }) => {
 };
 
 const mapStateToProps = state => ({
-  filtered: state.contacts.filter,
-  contactsList: state.contacts.items,
+  filtered: getFilter(state),
+  contactsList: getContacts(state),
 });
 
 const mapDispatchToProps = {

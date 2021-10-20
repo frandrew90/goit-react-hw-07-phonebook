@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
 import { connect } from 'react-redux';
 import { addNewContact } from '../../Redux/phonebook/phonebook-operations';
+import { getContacts } from '../../Redux/phonebook/phonebook-selectors';
 
 const ContactForm = ({ contatcs, addNewContact }) => {
   const [name, setName] = useState('');
@@ -68,7 +69,7 @@ const ContactForm = ({ contatcs, addNewContact }) => {
 };
 
 const mapStateToProps = state => ({
-  contatcs: state.contacts.items,
+  contatcs: getContacts(state),
 });
 
 const mapDispatchToProps = {

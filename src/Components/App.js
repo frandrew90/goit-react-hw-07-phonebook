@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getAllContacts } from '../Redux/phonebook/phonebook-operations';
-
+import { getContacts } from '../Redux/phonebook/phonebook-selectors';
 import ContactList from './contactList/ContactList';
 import ContactForm from './contatctForm/ContactForm';
 import Filter from './filter/Filter';
@@ -31,7 +31,7 @@ const App = ({ getAllContacts }) => {
 };
 
 const mapStateToProps = state => ({
-  contacts: state.contacts.items,
+  contacts: getContacts(state),
 });
 
 const mapDispatchToProps = {
