@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getAllContacts } from '../Redux/phonebook/phonebook-actions';
+import { getAllContacts } from '../Redux/phonebook/phonebook-operations';
 
 import ContactList from './contactList/ContactList';
 import ContactForm from './contatctForm/ContactForm';
@@ -10,16 +10,14 @@ import s from '../Components/App.module.css';
 
 const App = ({ contacts, getAllContacts }) => {
   useEffect(() => {
-    const newContacts = JSON.parse(localStorage.getItem('contacts'));
-    if (newContacts) {
-      getAllContacts(newContacts);
-    }
+    getAllContacts();
+
     // eslint-disable-next-line
   }, [getAllContacts]);
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   return (
     <>

@@ -1,3 +1,14 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "name": "asd",
+      "number": "456545544994",
+      "id": "1ec5f824-817f-4434-97ff-4389d604f7b3"
+    },
+    {
+      "name": "rosie simpson",
+      "number": "456545544994",
+      "id": "09f481ef-063a-4919-b7f9-60725981cf30"
+    }
+  ]
 }

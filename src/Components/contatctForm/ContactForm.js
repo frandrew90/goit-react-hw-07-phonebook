@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
 import { connect } from 'react-redux';
-import { addNewContact } from '../../Redux/phonebook/phonebook-actions';
+import { addNewContact } from '../../Redux/phonebook/phonebook-operations';
 
 const ContactForm = ({ contatcs, addNewContact }) => {
   const [name, setName] = useState('');
