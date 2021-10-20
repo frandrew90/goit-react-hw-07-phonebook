@@ -8,16 +8,12 @@ import ContactForm from './contatctForm/ContactForm';
 import Filter from './filter/Filter';
 import s from '../Components/App.module.css';
 
-const App = ({ contacts, getAllContacts }) => {
+const App = ({ getAllContacts }) => {
   useEffect(() => {
     getAllContacts();
 
     // eslint-disable-next-line
   }, [getAllContacts]);
-
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
 
   return (
     <>
@@ -46,5 +42,4 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
   getAllContacts: PropTypes.func.isRequired,
-  contacts: PropTypes.array.isRequired,
 };
