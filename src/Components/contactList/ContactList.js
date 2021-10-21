@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { connect } from 'react-redux';
 import { removeContact } from '../../Redux/phonebook/phonebook-operations';
 // import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
@@ -44,15 +43,6 @@ const ContactList = () => {
     </ul>
   );
 };
-
-// const mapStateToProps = state => ({
-//   filtered: getFilter(state),
-//   contactsList: getContacts(state),
-// });
-
-// const mapDispatchToProps = {
-//   removeContact,
-// };
 
 export default ContactList;
 

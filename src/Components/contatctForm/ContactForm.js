@@ -70,14 +70,6 @@ const ContactForm = () => {
   );
 };
 
-// const mapStateToProps = state => ({
-//   contatcs: getContacts(state),
-// });
-
-// const mapDispatchToProps = {
-//   addNewContact,
-// };
-
 export default ContactForm;
 
 // ContactForm.propTypes = {

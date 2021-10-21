@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 // import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
+
 import { useDispatch } from 'react-redux';
 import { getAllContacts } from '../Redux/phonebook/phonebook-operations';
 import { getContacts } from '../Redux/phonebook/phonebook-selectors';
@@ -32,14 +32,6 @@ const App = () => {
     </>
   );
 };
-
-// const mapStateToProps = state => ({
-//   contacts: getContacts(state),
-// });
-
-// const mapDispatchToProps = {
-//   getAllContacts,
-// };
 
 export default App;
 
