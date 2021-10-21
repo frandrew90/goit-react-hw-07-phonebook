@@ -6,19 +6,20 @@ import s from './ContactList.module.css';
 import {
   getContacts,
   getFilter,
+  getVisibleContacts,
 } from '../../Redux/phonebook/phonebook-selectors';
 
 const ContactList = () => {
-  const contactsList = useSelector(getContacts);
-  const filtered = useSelector(getFilter);
+  // const contactsList = useSelector(getContacts);
+  // const filtered = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  const onFindContact = (filtered, contactsList) => {
-    return contactsList.filter(contact =>
-      contact.name.toLowerCase().includes(filtered.toLowerCase()),
-    );
-  };
-  const findContact = onFindContact(filtered, contactsList);
+  // const onFindContact = (filtered, contactsList) => {
+  //   return contactsList.filter(contact =>
+  //     contact.name.toLowerCase().includes(filtered.toLowerCase()),
+  //   );
+  // };
+  const findContact = useSelector(getVisibleContacts);
 
   return (
     <ul>
