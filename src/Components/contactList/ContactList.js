@@ -1,15 +1,19 @@
 import React from 'react';
-
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+// import { connect } from 'react-redux';
 import { removeContact } from '../../Redux/phonebook/phonebook-operations';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 import {
   getContacts,
   getFilter,
 } from '../../Redux/phonebook/phonebook-selectors';
 
-const ContactList = ({ filtered, removeContact, contactsList }) => {
+const ContactList = () => {
+  const contactsList = useSelector(getContacts);
+  const filtered = useSelector(getFilter);
+  const dispatch = useDispatch();
+
   const onFindContact = (filtered, contactsList) => {
     return contactsList.filter(contact =>
       contact.name.toLowerCase().includes(filtered.toLowerCase()),
@@ -30,7 +34,7 @@ const ContactList = ({ filtered, removeContact, contactsList }) => {
                 className={s.contactListItemBtn}
                 type="button"
                 id={contact.id}
-                onClick={() => removeContact(contact.id)}
+                onClick={() => dispatch(removeContact(contact.id))}
               >
                 Delete
               </button>
@@ -41,19 +45,19 @@ const ContactList = ({ filtered, removeContact, contactsList }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  filtered: getFilter(state),
-  contactsList: getContacts(state),
-});
+// const mapStateToProps = state => ({
+//   filtered: getFilter(state),
+//   contactsList: getContacts(state),
+// });
 
-const mapDispatchToProps = {
-  removeContact,
-};
+// const mapDispatchToProps = {
+//   removeContact,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+export default ContactList;
 
-ContactList.propTypes = {
-  filtered: PropTypes.string.isRequired,
-  removeContact: PropTypes.func.isRequired,
-  contactsList: PropTypes.array.isRequired,
-};
+// ContactList.propTypes = {
+//   filtered: PropTypes.string.isRequired,
+//   removeContact: PropTypes.func.isRequired,
+//   contactsList: PropTypes.array.isRequired,
+// };

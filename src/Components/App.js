@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getAllContacts } from '../Redux/phonebook/phonebook-operations';
 import { getContacts } from '../Redux/phonebook/phonebook-selectors';
 import ContactList from './contactList/ContactList';
@@ -8,9 +9,11 @@ import ContactForm from './contatctForm/ContactForm';
 import Filter from './filter/Filter';
 import s from '../Components/App.module.css';
 
-const App = ({ getAllContacts }) => {
+const App = () => {
+  const dispatch = useDispatch(getContacts);
+
   useEffect(() => {
-    getAllContacts();
+    dispatch(getAllContacts());
 
     // eslint-disable-next-line
   }, [getAllContacts]);
@@ -30,16 +33,16 @@ const App = ({ getAllContacts }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  contacts: getContacts(state),
-});
+// const mapStateToProps = state => ({
+//   contacts: getContacts(state),
+// });
 
-const mapDispatchToProps = {
-  getAllContacts,
-};
+// const mapDispatchToProps = {
+//   getAllContacts,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
 
-App.propTypes = {
-  getAllContacts: PropTypes.func.isRequired,
-};
+// App.propTypes = {
+//   getAllContacts: PropTypes.func.isRequired,
+// };

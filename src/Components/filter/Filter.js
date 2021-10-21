@@ -1,15 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import s from './Filter.module.css';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { findContact } from '../../Redux/phonebook/phonebook-actions';
 import { getFilter } from '../../Redux/phonebook/phonebook-selectors';
 
-const Filter = ({ filter, findContact }) => {
+const Filter = () => {
+  const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
+
   const handleChange = e => {
     const { value } = e.target;
 
-    findContact(value);
+    dispatch(findContact(value));
   };
 
   return (
@@ -26,17 +30,17 @@ const Filter = ({ filter, findContact }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  filter: getFilter(state),
-});
+// const mapStateToProps = state => ({
+//   filter: getFilter(state),
+// });
 
-const mapDispatchToProps = {
-  findContact,
-};
+// const mapDispatchToProps = {
+//   findContact,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default Filter;
 
-Filter.propTypes = {
-  findContact: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
-};
+// Filter.propTypes = {
+//   findContact: PropTypes.func.isRequired,
+//   filter: PropTypes.string.isRequired,
+// };
