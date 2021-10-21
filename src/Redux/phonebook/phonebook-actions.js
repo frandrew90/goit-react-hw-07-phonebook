@@ -25,3 +25,5 @@ export const getAllContactsSuccess = createAction(
 export const getAllContactsError = createAction('phonebook/getContactsError');
 
 export const findContact = createAction('phonebook/findContact');
+
+export const resetError = createAction('phonebook/resetError');

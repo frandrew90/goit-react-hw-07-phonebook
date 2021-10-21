@@ -1,16 +1,17 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import {
-  // addContactReqest,
+  addContactReqest,
   addContactSuccess,
-  // addContactError,
-  // removeContactReqest,
+  addContactError,
+  removeContactReqest,
   removeContactSuccess,
-  // removeContactError,
-  // getAllContactsReqest,
+  removeContactError,
+  getAllContactsReqest,
   getAllContactsSuccess,
-  // getAllContactsError,
+  getAllContactsError,
   findContact,
+  resetError,
 } from './phonebook-actions';
 
 const items = createReducer([], {
@@ -24,7 +25,15 @@ const filter = createReducer('', {
   [findContact]: (_, action) => action.payload,
 });
 
+const error = createReducer('', {
+  [resetError]: () => '',
+  [addContactError]: (_, action) => action.payload,
+  [removeContactError]: (_, action) => action.payload,
+  [getAllContactsError]: (_, action) => action.payload,
+});
+
 export default combineReducers({
   items,
   filter,
+  error,
 });

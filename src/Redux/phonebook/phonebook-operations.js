@@ -10,6 +10,7 @@ import {
   getAllContactsReqest,
   getAllContactsSuccess,
   getAllContactsError,
+  resetError,
 } from './phonebook-actions';
 
 axios.defaults.baseURL = 'http://localhost:3000';
@@ -22,7 +23,10 @@ export const addNewContact = (name, number) => dispatch => {
   axios
     .post('/contacts', contact)
     .then(response => dispatch(addContactSuccess(response.data)))
-    .catch(error => dispatch(addContactError(error)));
+    .catch(error => {
+      dispatch(resetError());
+      dispatch(addContactError(error));
+    });
 };
 
 export const removeContact = id => dispatch => {
@@ -31,7 +35,10 @@ export const removeContact = id => dispatch => {
   axios
     .delete(`/contacts/${id}`)
     .then(() => dispatch(removeContactSuccess(id)))
-    .catch(error => dispatch(removeContactError(error)));
+    .catch(error => {
+      dispatch(resetError());
+      dispatch(removeContactError(error));
+    });
 };
 
 export const getAllContacts = () => dispatch => {
@@ -40,5 +47,8 @@ export const getAllContacts = () => dispatch => {
   axios
     .get('/contacts')
     .then(response => dispatch(getAllContactsSuccess(response.data)))
-    .catch(error => dispatch(getAllContactsError(error)));
+    .catch(error => {
+      dispatch(resetError());
+      dispatch(getAllContactsError(error));
+    });
 };
