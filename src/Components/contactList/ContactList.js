@@ -3,22 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeContact } from '../../Redux/phonebook/phonebook-operations';
 // import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
-import {
-  getContacts,
-  getFilter,
-  getVisibleContacts,
-} from '../../Redux/phonebook/phonebook-selectors';
+import { getVisibleContacts } from '../../Redux/phonebook/phonebook-selectors';
 
 const ContactList = () => {
-  // const contactsList = useSelector(getContacts);
-  // const filtered = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  // const onFindContact = (filtered, contactsList) => {
-  //   return contactsList.filter(contact =>
-  //     contact.name.toLowerCase().includes(filtered.toLowerCase()),
-  //   );
-  // };
   const findContact = useSelector(getVisibleContacts);
 
   return (
